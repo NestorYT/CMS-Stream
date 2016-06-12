@@ -1,0 +1,46 @@
+#	Mod_security can interfere with uploading of content such as attachments. If you
+#	cannot attach files, remove the "#" from the lines below.
+#<IfModule mod_security.c>
+#	SecFilterEngine Off
+#	SecFilterScanPOST Off
+#</IfModule>
+
+Options +FollowSymlinks
+RewriteEngine On
+RewriteRule ^(.*).html $1.php [L]
+RewriteCond %{HTTP_HOST} ^modzcatz.fr$ 
+RewriteRule ^(.*)   http://www.modzcatz.fr/$1  [QSA,L,R=301]
+
+Options -Indexes
+
+ErrorDocument 401 default
+ErrorDocument 403 /403.php
+ErrorDocument 404 /404.php
+ErrorDocument 405 default
+ErrorDocument 406 default
+ErrorDocument 500 default
+ErrorDocument 501 default
+ErrorDocument 503 default
+
+### INTERDIRE LES AUTRES TYPES DE FICHIER INDEX
+<Files ~ "^(index)\.(p?s?x?htm?|txt|aspx?|cfml?|cgi|pl|php[3-9]|jsp|xml)$">
+order allow,deny
+deny from all
+</Files>
+### DES FAUX URLS, ON LES NEUTRALISE
+RedirectMatch gone ^/_vti.*
+RedirectMatch gone ^/MSOffice.*
+RedirectMatch gone ^[-_a-z0-9/\.]*//.*
+RedirectMatch gone ^.*/etc/passwd.*
+### FILTRE CONTRE XSS, REDIRECTIONS HTTP, base64_encode, VARIABLE PHP GLOBALS VIA URL, MODIFIER VARIABLE _REQUEST VIA URL, TEST DE FAILLE PHP, INJECTION SQL SIMPLE
+RewriteEngine On
+RewriteCond %{REQUEST_METHOD} (GET|POST) [NC]
+RewriteCond %{QUERY_STRING} ^(.*)(%3C|<)/?script(.*)$ [NC,OR]
+RewriteCond %{QUERY_STRING} ^(.*)(%3D|=)?javascript(%3A|:)(.*)$ [NC,OR]
+RewriteCond %{QUERY_STRING} ^(.*)document\.location\.href(.*)$ [OR]
+RewriteCond %{QUERY_STRING} ^(.*)(%3D|=)http(%3A|:)(/|%2F){2}(.*)$ [NC,OR] ## ATTENTION A CETTE REGLE. ELLE PEUT CASSER CERTAINES REDIRECTIONS RESSEMBLANT A: http://www.truc.fr/?r=http://www.google.fr ##
+RewriteCond %{QUERY_STRING} ^(.*)base64_encode(.*)$ [OR]
+RewriteCond %{QUERY_STRING} ^(.*)GLOBALS(=|[|%[0-9A-Z]{0,2})(.*)$ [OR]
+RewriteCond %{QUERY_STRING} ^(.*)_REQUEST(=|[|%[0-9A-Z]{0,2})(.*)$ [OR]
+RewriteCond %{QUERY_STRING} ^(.*)(SELECT(%20|\+)|UNION(%20|\+)ALL|INSERT(%20|\+)|DELETE(%20|\+)|CHAR\(|UPDATE(%20|\+)|REPLACE(%20|\+)|LIMIT(%20|\+))(.*)$ [NC]
+RewriteRule (.*) - [F]
