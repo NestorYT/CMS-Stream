@@ -19,4 +19,4 @@ Un fois logué sur le site vous pourrez changer le mot de passe et le mail :)
 
 4 - Pour pérsonnalisé la F.A.Q modifié directement le fichier faq.php.
 
-NOTE : PHP7 n'est pour le moment non-compatible avec la version actuel du site.
+NOTE : PHP7 n'est pour le moment non-compatible avec la version actuel du CMS.
