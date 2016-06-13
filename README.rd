@@ -31,5 +31,5 @@ Ligne 115 à 124 => Modifier le mail et le message associé.
 
 NOTE : PHP7 n'est pour le moment non-compatible avec la version actuel du CMS.
 
-
+<img src="http://image.prntscr.com/image/ae9aaf773b1f4fb88d04983b2b7e1ccb.png">
 
