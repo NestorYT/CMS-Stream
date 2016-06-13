@@ -8,8 +8,8 @@
 Options +FollowSymlinks
 RewriteEngine On
 RewriteRule ^(.*).html $1.php [L]
-RewriteCond %{HTTP_HOST} ^modzcatz.fr$ 
-RewriteRule ^(.*)   http://www.modzcatz.fr/$1  [QSA,L,R=301]
+RewriteCond %{HTTP_HOST} ^votredomaine$ 
+RewriteRule ^(.*)   http://www.votredomaine.fr/$1  [QSA,L,R=301]
 
 Options -Indexes
 
