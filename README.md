@@ -23,6 +23,10 @@ Un fois logué sur le site vous pourrez changer le mot de passe et le mail :)
 
 Les lignes corréspondante a OG:TITLE OG:URL etc. (ligne 8 à 22)
 
+6 - Modification du .htaccess :
+
+Ligne 10 et 11 > remplacer votredomaine par le votre sans les http://www.
+
 NOTE : PHP7 n'est pour le moment non-compatible avec la version actuel du CMS.
 
 <img src="http://image.prntscr.com/image/ae9aaf773b1f4fb88d04983b2b7e1ccb.png">
