@@ -675,6 +675,7 @@ if(empty($result_modifadmin)){
 	<option value="VideoMega">VideoMega</option>
 	<option value="ViD|AG">ViD|AG</option>
 	<option value="AllVid">AllVid</option>
+	<option value="UpToStream">UpToStream</option>
 	</select>
 	<input type="text" name="url_video" value="<?php echo $row['lien_streaming']; ?>" class="form-control_profil" required>
 	</center>
@@ -871,6 +872,7 @@ if(empty($result_modifadmin)){
 	<option value="VideoMega">VideoMega</option>
 	<option value="ViD|AG">ViD|AG</option>
 	<option value="AllVid">AllVid</option>
+	<option value="UpToStream">UpToStream</option>
 	</select>
 	<input type="text" name="url_video" value="<?php echo $row['lien_streaming']; ?>" class="form-control_profil" required>
 	</center>
