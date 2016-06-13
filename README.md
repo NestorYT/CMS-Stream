@@ -21,7 +21,7 @@ Un fois logué sur le site vous pourrez changer le mot de passe et le mail :)
 
 5 - Pour Facebook, modifier dans le fichier >> system > header.php
 
-Les lignes corréspondante a OG:TITLE OG:URL etc.
+Les lignes corréspondante a OG:TITLE OG:URL etc. (ligne 8 à 22)
 
 NOTE : PHP7 n'est pour le moment non-compatible avec la version actuel du CMS.
 
