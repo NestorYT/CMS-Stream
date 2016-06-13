@@ -17,8 +17,8 @@ include 'system/header.php';
 require 'system/function.php';
 require 'system/recaptchalib.php';
 
-$siteKey = '6LcOLBITAAAAAJg8On0Emc-6GUZfSn7gb2RQQ5IE'; // votre clé publique
-$secret = '6LcOLBITAAAAAP67EVlRBS-4Z15gGTKkLvijuAZ5'; // votre clé privée
+$siteKey = ''; // votre clé publique
+$secret = ''; // votre clé privée
 ?>
 
 <div class="wrap" align="center">
@@ -110,14 +110,14 @@ $secret = '6LcOLBITAAAAAP67EVlRBS-4Z15gGTKkLvijuAZ5'; // votre clé privée
 
 														$destinataire = $email;
 														$sujet = "Activer votre compte" ;
-														$entete = "From: inscription@modzcatz.fr" ;
+														$entete = "From: inscription@votredomain.fr" ;
 														
-														$message = 'Bienvenue sur MoDzCatZ.fr,
+														$message = 'Bienvenue sur VotreDomaine,
  
 Pour activer votre compte, veuillez cliquer sur le lien ci dessous
 ou copier/coller dans votre navigateur internet.
  
-http://modzcatz.fr/activation.html?log='.urlencode($_POST['pseudo']).'&cle='.urlencode($cle).'
+http://domaine.fr/activation.html?log='.urlencode($_POST['pseudo']).'&cle='.urlencode($cle).'
  
  
 ---------------
