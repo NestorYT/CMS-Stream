@@ -19,6 +19,9 @@ Un fois logué sur le site vous pourrez changer le mot de passe et le mail :)
 
 4 - Pour pérsonnalisé la F.A.Q modifié directement le fichier faq.php.
 
+5 - Pour Facebook, modifier dans le fichier >> system > header.php
+Les lignes corréspondante a OG:TITLE OG:URL etc.
+
 NOTE : PHP7 n'est pour le moment non-compatible avec la version actuel du CMS.
 
 <img src="http://image.prntscr.com/image/ae9aaf773b1f4fb88d04983b2b7e1ccb.png">
