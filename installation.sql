@@ -128,7 +128,7 @@ CREATE TABLE `membres` (
 --
 
 INSERT INTO `membres` (`id`, `pseudo`, `password`, `email`, `ip`, `date`, `rank`, `cle`, `actif`, `renvoi_mdp`, `url_avatar`, `theme`) VALUES
-(1, 'demo', '89e495e7941cf9e40e6980d14a16bf023ccd4c91', 'test@gmail.com', '127.0.0.1', '2016-05-14 10:05:09', 4, '1cc1570785198d3f522c7ec8047ce1e2', 1, 0, '', 9);
+(1, 'demo', '89e495e7941cf9e40e6980d14a16bf023ccd4c91', 'test@gmail.com', '127.0.0.1', '2016-05-14 10:05:09', 4, '1cc1570785198d3f522c7ec8047ce1e2', 1, 0, '', 1);
 
 -- --------------------------------------------------------
 
