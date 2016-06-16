@@ -19,7 +19,9 @@ require 'system/function.php';
 						$req = $bdd->prepare("SELECT * FROM membres");
 						$req->execute();
 						$row = $req->fetch();
-
+						if(eregi('[^a-zA-Z0-9_-]', $_POST['pseudo'])){
+						   echo $msg = '<div id="reptoperror"><center><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Seul les caractères alpha-numérique et le _ - sont acceptés</center></div>';
+						}else{
 						if($_SERVER['HTTP_REFERER'] == $adresseSite . 'connexion.html'){
 							if(isset($_POST) && isset($_POST['pseudo']) AND isset($_POST['password']) && isset($_POST['token_login'])){
 								sleep(1);
@@ -64,7 +66,7 @@ require 'system/function.php';
 							}
 						}else{
 							$message_erreur = '';
-						}
+						}}
 						if(isset($message_erreur)){
 							echo $message_erreur;
 						}
