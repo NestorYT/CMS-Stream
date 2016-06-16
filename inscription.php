@@ -24,18 +24,6 @@ $secret = ''; // votre clé privée
 <div class="wrap" align="center">
 			<div class="clear"></div>
 <?php
-
-
-					
-					$req = $bdd->prepare("SELECT * FROM membres WHERE email = :email");
-					$req->execute(array(
-						'email' => $_POST['email']));
-					$row = $req->fetch();
-					
-					$req = $bdd->prepare("SELECT * FROM membres WHERE pseudo = :pseudo");
-					$req->execute(array(
-						'pseudo' => $_POST['pseudo']));
-					$row_1 = $req->fetch();
 					
 					$req = $bdd->prepare("SELECT * FROM core WHERE id = :id");
 					$req->execute(array(
@@ -49,7 +37,21 @@ $secret = ''; // votre clé privée
 						$message_erreur1 = "Pour effectuer cette action, vous devez &ecirc;tre d&eacute;connect&eacute;.";
 						echo '<div id="reptoperror"><center><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> '. $message_erreur1 .'</center></div>';
 					}else{
-
+						
+					if(eregi('[^a-zA-Z0-9_-]', $_POST['pseudo'])){
+					     echo $msg = '<div id="reptoperror"><center><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Seul les caractères alpha-numérique et le _ - sont acceptés</center></div>';
+					}else{
+						
+					$req = $bdd->prepare("SELECT * FROM membres WHERE email = :email");
+					$req->execute(array(
+						'email' => $_POST['email']));
+					$row = $req->fetch();
+					
+					$req = $bdd->prepare("SELECT * FROM membres WHERE pseudo = :pseudo");
+					$req->execute(array(
+						'pseudo' => $_POST['pseudo']));
+					$row_1 = $req->fetch();
+					
 						if($_SERVER['HTTP_REFERER'] == $adresseSite . 'inscription.html'){
 
 							
@@ -166,7 +168,7 @@ Ceci est un mail automatique, Merci de ne pas y répondre.';
 					}else{
 						$message_erreur = '';
 					}
-
+}
 
 					if(isset($message_erreur)){
 						echo $message_erreur;
