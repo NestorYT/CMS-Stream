@@ -4,7 +4,7 @@ if($_GET['option'] == 'membre' || $_GET['option'] == 'banni' || $_GET['option'] 
 $namePage = 'Changement du rang d\'un membre';
 }elseif($_GET['option'] == 'qualite'){
 $namePage = 'Changement d\'une qualitée vidéo';
-}elseif($_GET['option'] == 'maintenance' || $_GET['option'] == 'inscription' || $_GET['option'] == 'maintenance' || $_GET['option'] == 'commentaires' || $_GET['option'] == 'news'){
+}elseif($_GET['option'] == 'maintenance' || $_GET['option'] == 'inscription' || $_GET['option'] == 'maintenance' || $_GET['option'] == 'commentaires' || $_GET['option'] == 'news' || $_GET['option'] == 'ddl'){
 $namePage = 'Changement d\'option';
 }elseif($_GET['option'] == 'genre'){
 $namePage = 'Changement d\'un genre';
@@ -362,7 +362,7 @@ if(!isset($_SESSION['pseudo'])){
 			echo $result_genre;
 		}
 
-	}elseif($_SESSION['rank'] > 3 && ($_GET['option'] == 'maintenance' || $_GET['option'] == 'inscription' || $_GET['option'] == 'maintenance' || $_GET['option'] == 'commentaires' || $_GET['option'] == 'news')){
+	}elseif($_SESSION['rank'] > 3 && ($_GET['option'] == 'maintenance' || $_GET['option'] == 'inscription' || $_GET['option'] == 'maintenance' || $_GET['option'] == 'commentaires' || $_GET['option'] == 'news' || $_GET['option'] == 'ddl')){
 
 							$req = $bdd->prepare("SELECT * FROM core WHERE id = :id");
 							$req->execute(array(
@@ -471,7 +471,7 @@ if(!isset($_SESSION['pseudo'])){
 							}elseif($_GET['option'] == 'ddl'){
 								if($row_core['ddl'] == '0'){
 
-											$news = 1;
+											$ddl = 1;
 											$id = 1;
 
 											$req = $bdd->prepare("UPDATE core SET ddl = :ddl WHERE id = :id");
