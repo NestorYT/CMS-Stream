@@ -515,7 +515,8 @@ if(!isset($_SESSION['pseudo'])){
 										$url_video = filter_var(htmlentities($_POST['url_video']), FILTER_SANITIZE_STRING);
 										$acteur = filter_var(htmlentities($_POST['acteur']), FILTER_SANITIZE_STRING);
 										$synopsis = filter_var(htmlentities($_POST['synopsis']), FILTER_SANITIZE_STRING);
-
+										$lien_ddl = filter_var(htmlentities($_POST['lien_ddl']), FILTER_SANITIZE_STRING);
+										
 												$req = $bdd->prepare('SELECT count(*) AS nbre_occurences FROM film WHERE titre = :titre AND qualite = :qualiter AND id != :id');
 												$req->execute(array(
 												'titre' => $titre,
@@ -535,7 +536,7 @@ if(!isset($_SESSION['pseudo'])){
 												$req1->closeCursor();
 
 										if($nbre_occurences == 0 || $nbre_occurences1 != 0){	
-										if($req = $bdd->prepare('UPDATE film SET url_jaquette = :url_jaquette, titre = :titre, titre_release = :titre_release, duree = :duree, date_sortie = :date_sortie, realisateur = :realisateur, acteurs = :acteurs, genre_1 = :genre_1, genre_2 = :genre_2, genre_3 = :genre_3, qualite = :qualite, synopsy = :synopsy, hebergeur_video = :hebergeur_video, lien_streaming = :lien_streaming, exclusivite = :exclusivite, video_hs = :video_hs, pending = :pending WHERE id = :id')){
+										if($req = $bdd->prepare('UPDATE film SET url_jaquette = :url_jaquette, titre = :titre, titre_release = :titre_release, duree = :duree, date_sortie = :date_sortie, realisateur = :realisateur, acteurs = :acteurs, genre_1 = :genre_1, genre_2 = :genre_2, genre_3 = :genre_3, qualite = :qualite, synopsy = :synopsy, hebergeur_video = :hebergeur_video, lien_streaming = :lien_streaming, exclusivite = :exclusivite, video_hs = :video_hs, pending = :pending, lien_ddl = :lien_ddl WHERE id = :id')){
 
 												$req->bindParam(':url_jaquette', $url_jaquette);
 												$req->bindParam(':titre', $titre);
@@ -554,6 +555,7 @@ if(!isset($_SESSION['pseudo'])){
 												$req->bindParam(':exclusivite', $exclusivite);
 												$req->bindParam(':video_hs', $video_hs);
 												$req->bindParam(':pending', $pending);
+												$req->bindParam(':lien_ddl', $lien_ddl);
 												$req->bindParam(':id', $q);
          										$req->execute();
 
@@ -676,8 +678,15 @@ if(empty($result_modifadmin)){
 	<option value="ViD|AG">ViD|AG</option>
 	<option value="AllVid">AllVid</option>
 	<option value="UpToStream">UpToStream</option>
+	<option value="YouWatch">YouWatch</option>
+	<option value="UptoBox">UptoBox</option>
 	</select>
 	<input type="text" name="url_video" value="<?php echo $row['lien_streaming']; ?>" class="form-control_profil" required>
+	<?php if(empty($row['lien_ddl'])){
+			echo '<input type="text" name="lien_ddl" placeholder="Lien jHeberg*" class="form-control_profil" required>';
+		}else{
+			echo '<input type="text" name="lien_ddl" value="'.$row['lien_ddl'].'" class="form-control_profil" required>';
+	} ?>
 	</center>
 	<br>
 	<center>
@@ -747,7 +756,8 @@ if(empty($result_modifadmin)){
 										$url_video = filter_var(htmlentities($_POST['url_video']), FILTER_SANITIZE_STRING);
 										$acteur = filter_var(htmlentities($_POST['acteur']), FILTER_SANITIZE_STRING);
 										$synopsis = filter_var(htmlentities($_POST['synopsis']), FILTER_SANITIZE_STRING);
-
+										$lien_ddl = filter_var(htmlentities($_POST['lien_ddl']), FILTER_SANITIZE_STRING);
+										
 												$req = $bdd->prepare('SELECT count(*) AS nbre_occurences FROM film WHERE titre = :titre AND qualite = :qualiter AND id != :id');
 												$req->execute(array(
 												'titre' => $titre,
@@ -767,7 +777,7 @@ if(empty($result_modifadmin)){
 												$req1->closeCursor();
 
 										if($nbre_occurences == 0 || $nbre_occurences1 != 0){	
-										if($req = $bdd->prepare('UPDATE film SET url_jaquette = :url_jaquette, titre = :titre, titre_release = :titre_release, duree = :duree, date_sortie = :date_sortie, realisateur = :realisateur, acteurs = :acteurs, genre_1 = :genre_1, genre_2 = :genre_2, genre_3 = :genre_3, qualite = :qualite, synopsy = :synopsy, hebergeur_video = :hebergeur_video, lien_streaming = :lien_streaming, video_hs = :video_hs, pending = :pending WHERE id = :id')){
+										if($req = $bdd->prepare('UPDATE film SET url_jaquette = :url_jaquette, titre = :titre, titre_release = :titre_release, duree = :duree, date_sortie = :date_sortie, realisateur = :realisateur, acteurs = :acteurs, genre_1 = :genre_1, genre_2 = :genre_2, genre_3 = :genre_3, qualite = :qualite, synopsy = :synopsy, hebergeur_video = :hebergeur_video, lien_streaming = :lien_streaming, video_hs = :video_hs, pending = :pending, lien_ddl = :lien_ddl WHERE id = :id')){
 
 												$req->bindParam(':url_jaquette', $url_jaquette);
 												$req->bindParam(':titre', $titre);
@@ -785,6 +795,7 @@ if(empty($result_modifadmin)){
 												$req->bindParam(':lien_streaming', $url_video);
 												$req->bindParam(':video_hs', $video_hs);
 												$req->bindParam(':pending', $pending);
+												$req->bindParam(':lien_ddl', $lien_ddl);
 												$req->bindParam(':id', $q);
          										$req->execute();
 
@@ -873,8 +884,15 @@ if(empty($result_modifadmin)){
 	<option value="ViD|AG">ViD|AG</option>
 	<option value="AllVid">AllVid</option>
 	<option value="UpToStream">UpToStream</option>
+	<option value="YouWatch">YouWatch</option>
+	<option value="UptoBox">UptoBox</option>
 	</select>
 	<input type="text" name="url_video" value="<?php echo $row['lien_streaming']; ?>" class="form-control_profil" required>
+	<?php if(empty($row['lien_ddl'])){
+			echo '<input type="text" name="lien_ddl" placeholder="Lien jHeberg*" class="form-control_profil" style="margin-top:10px;" required></center>';
+		}else{
+			echo '<input type="text" name="lien_ddl" value="'.$row['lien_ddl'].'" class="form-control_profil" style="margin-top:10px;" required></center>';
+	} ?>
 	</center>
 	<br>
 	<center>
