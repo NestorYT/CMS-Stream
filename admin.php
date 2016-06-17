@@ -23,6 +23,7 @@ if($_SESSION['rank'] > 2){
 					$result_option_2 = 'inscription';
 					$result_option_3 = 'commentaires';
 					$result_option_4 = 'news';
+					$result_option_5 = 'ddl';
 
 						if($row_core['maintenance'] == 0){
 						$result_maintenance = 'Activer la maintenance';
@@ -44,6 +45,11 @@ if($_SESSION['rank'] > 2){
 						$result_news = 'Désactiver les news';
 						}elseif($row_core['news'] == 1){
 						$result_news = 'Activer les news';
+						}
+						if($row_core['ddl'] == 0){
+						$result_news = 'Désactiver les téléchargements';
+						}elseif($row_core['ddl'] == 1){
+						$result_news = 'Activer les téléchargements';
 						}
 						
 						$retour = $bdd->query('SELECT COUNT(*) AS nbre_entrees FROM membres WHERE actif = 0');
@@ -92,6 +98,7 @@ if($_SESSION['rank'] > 2){
 					<div class="link_admin"><?php echo $result_inscription; ?><span class="link_admin-right"><a href="modifier.html?option=<?php echo $result_option_2; ?>"><i class="fa fa-wrench" aria-hidden="true"></i></a></span></div>
 					<div class="link_admin"><?php echo $result_commentaires; ?><span class="link_admin-right"><a href="modifier.html?option=<?php echo $result_option_3; ?>"><i class="fa fa-wrench" aria-hidden="true"></i></a></span></div>
 					<div class="link_admin"><?php echo $result_news; ?><span class="link_admin-right"><a href="modifier.html?option=<?php echo $result_option_4; ?>"><i class="fa fa-wrench" aria-hidden="true"></i></a></span></div>
+					<div class="link_admin"><?php echo $result_ddl; ?><span class="link_admin-right"><a href="modifier.html?option=<?php echo $result_option_5; ?>"><i class="fa fa-wrench" aria-hidden="true"></i></a></span></div>	
 						<?php
 					}else{}
 } }else{
