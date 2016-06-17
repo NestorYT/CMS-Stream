@@ -550,7 +550,6 @@ echo '<option value="'.$row_4['titre'].'">'.$row_4['titre'].'</option>';
 <option value="AllVid">AllVid</option>
 <option value="UpToStream">UpToStream</option>
 <option value="YouWatch">YouWatch</option>
-<option value="UptoBox">UptoBox</option>
 </select>
 <input type="text" name="url_video" placeholder="Numero de la vidéo**" class="form-control_profil" required>
 </center>
@@ -867,8 +866,8 @@ echo '<option value="'.$row_4['titre'].'">'.$row_4['titre'].'</option>';
 <option value="VideoMega">VideoMega</option>
 <option value="ViD|AG">ViD|AG</option>
 <option value="AllVid">AllVid</option>
+<option value="UptoStream">UptoStream</option>
 <option value="YouWatch">YouWatch</option>
-<option value="UptoBox">UptoBox</option>
 </select>
 <input type="text" name="url_video" placeholder="Numero de la vidéo**" class="form-control_profil" required>
 </center>
