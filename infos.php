@@ -161,6 +161,8 @@ if(isset($_POST['button_video_hs'])){
 							echo '<iframe width="640" height="360" src="http://allvid.ch/embed-'.$row['lien_streaming'].'.html" frameborder="0" allowfullscreen></iframe>';
 						}elseif($row['hebergeur_video'] == 'UpToStream'){
 							echo '<iframe width="640" height="360" src="https://uptostream.com/iframe/'.$row['lien_streaming'].'" frameborder="0" allowfullscreen></iframe>';
+						}elseif($row['hebergeur_video'] == 'YouWatch'){
+							echo '<iframe width="640" height="360" src="http://youwatch.org/embed-'.$row['lien_streaming'].'.html" frameborder="0" allowfullscreen></iframe>';
 						}
 						?></center></p>					
 				</div>
@@ -417,6 +419,8 @@ if(isset($_POST['button_video_hs'])){
 							echo '<iframe width="640" height="360" src="http://allvid.ch/embed-'.$row['lien_streaming'].'.html" frameborder="0" allowfullscreen></iframe>';
 						}elseif($row['hebergeur_video'] == 'UpToStream'){
 							echo '<iframe width="640" height="360" src="https://uptostream.com/iframe/'.$row['lien_streaming'].'" frameborder="0" allowfullscreen></iframe>';
+						}elseif($row['hebergeur_video'] == 'YouWatch'){
+							echo '<iframe width="640" height="360" src="http://youwatch.org/embed-'.$row['lien_streaming'].'.html" frameborder="0" allowfullscreen></iframe>';
 						}
 						?></center></p>					
 					</div>
@@ -670,6 +674,8 @@ $req = $bdd->prepare("SELECT * FROM film WHERE id = :id");
 							echo '<iframe width="640" height="360" src="http://allvid.ch/embed-'.$row['lien_streaming'].'.html" frameborder="0" allowfullscreen></iframe>';
 						}elseif($row['hebergeur_video'] == 'UpToStream'){
 							echo '<iframe width="640" height="360" src="https://uptostream.com/iframe/'.$row['lien_streaming'].'" frameborder="0" allowfullscreen></iframe>';
+						}elseif($row['hebergeur_video'] == 'YouWatch'){
+							echo '<iframe width="640" height="360" src="http://youwatch.org/embed-'.$row['lien_streaming'].'.html" frameborder="0" allowfullscreen></iframe>';
 						}
 						?></center></p>					
 				</div>
@@ -808,6 +814,8 @@ if($row['uploader_id'] == $_SESSION['id']){
 							echo '<iframe width="640" height="360" src="http://allvid.ch/embed-'.$row['lien_streaming'].'.html" frameborder="0" allowfullscreen></iframe>';
 						}elseif($row['hebergeur_video'] == 'UpToStream'){
 							echo '<iframe width="640" height="360" src="https://uptostream.com/iframe/'.$row['lien_streaming'].'" frameborder="0" allowfullscreen></iframe>';
+						}elseif($row['hebergeur_video'] == 'YouWatch'){
+							echo '<iframe width="640" height="360" src="http://youwatch.org/embed-'.$row['lien_streaming'].'.html" frameborder="0" allowfullscreen></iframe>';
 						}
 						?></center></p>					
 				</div>
