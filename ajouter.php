@@ -281,6 +281,7 @@ if(($_SESSION['rank'] > 2 && $_GET['option'] == 'qualite') || ($_SESSION['rank']
 										$url_video = filter_var(htmlentities($_POST['url_video']), FILTER_SANITIZE_STRING);
 										$acteur = filter_var(htmlentities($_POST['acteur']), FILTER_SANITIZE_STRING);
 										$synopsis = filter_var(htmlentities($_POST['synopsis']), FILTER_SANITIZE_STRING);
+										$lien_ddl = filter_var(htmlentities($_POST['lien_ddl']), FILTER_SANITIZE_STRING);
 										$date = date("j F Y");
 										$date = str_replace('September', 'Septembre', $date);
 										$date = str_replace('October', 'Octobre', $date);
@@ -307,7 +308,7 @@ if(($_SESSION['rank'] > 2 && $_GET['option'] == 'qualite') || ($_SESSION['rank']
 												$req->closeCursor();
 
 										if($nbre_occurences == 0){	
-										if($i = $bdd->prepare('INSERT INTO film (id, date_add, uploader_id, url_jaquette, titre, titre_release, duree, date_sortie, realisateur, acteurs, genre_1, genre_2, genre_3, qualite, synopsy, hebergeur_video, lien_streaming, exclusivite, video_hs, pending) VALUES (:id, :date_add, :uploader_id, :url_jaquette, :titre, :titre_release, :duree, :date_sortie, :realisateur, :acteurs, :genre_1, :genre_2, :genre_3, :qualite, :synopsy, :hebergeur_video, :lien_streaming, :exclusivite, :video_hs, :pending)')){
+										if($i = $bdd->prepare('INSERT INTO film (id, date_add, uploader_id, url_jaquette, titre, titre_release, duree, date_sortie, realisateur, acteurs, genre_1, genre_2, genre_3, qualite, synopsy, hebergeur_video, lien_streaming, exclusivite, video_hs, pending, lien_ddl) VALUES (:id, :date_add, :uploader_id, :url_jaquette, :titre, :titre_release, :duree, :date_sortie, :realisateur, :acteurs, :genre_1, :genre_2, :genre_3, :qualite, :synopsy, :hebergeur_video, :lien_streaming, :exclusivite, :video_hs, :pending, :lien_ddl)')){
 
 													$i->bindParam(':id', $id);
 													$i->bindParam(':date_add', $date);
@@ -329,6 +330,7 @@ if(($_SESSION['rank'] > 2 && $_GET['option'] == 'qualite') || ($_SESSION['rank']
 													$i->bindParam(':exclusivite', $exclusivite);
 													$i->bindParam(':video_hs', $video_hs);
 													$i->bindParam(':pending', $pending);
+													$i->bindParam(':lien_ddl', $lien_ddl);
 													$i->execute();
 
 											echo '<div id="reptopvalid"><center><i class="fa fa-check"></i> Le film : '.$_POST['titre'].' à bien été ajoutée.</center></div><meta http-equiv="refresh" content="1;ajouter.html?option=auto" />';
@@ -544,20 +546,23 @@ echo '<option value="'.$row_4['titre'].'">'.$row_4['titre'].'</option>';
 <option value="ViD|AG">ViD|AG</option>
 <option value="AllVid">AllVid</option>
 <option value="UpToStream">UpToStream</option>
+<option value="YouWatch">YouWatch</option>
+<option value="UptoBox">UptoBox</option>
 </select>
 <input type="text" name="url_video" placeholder="Numero de la vidéo**" class="form-control_profil" required>
 </center>
-<?php if($_SESSION['rank'] > 2){ ?>
 <br>
 <center>
+<input type="text" name="lien_ddl" placeholder="Lien jHeberg*" class="form-control_profil" required>
+<?php if($_SESSION['rank'] > 2){ ?>
 <select class="form-control_profil" name="exclusivite"/>
 <option value="0" selected>Ce n'est pas une exclusivité</option>
 <option value="1">C'est une exclusivité</option>
 </select>
-</center>
 <?php }else {
 	echo '<input type="hidden" name="exclusivite" value="" class="form-control_profil">';
-	} ?>	
+	} ?>
+</center>		
 <br>
 <center>
 <?php 
@@ -716,6 +721,7 @@ if(isset($_POST['button_film'])){
 										$url_video = filter_var(htmlentities($_POST['url_video']), FILTER_SANITIZE_STRING);
 										$acteur = filter_var(htmlentities($_POST['acteur']), FILTER_SANITIZE_STRING);
 										$synopsis = filter_var(htmlentities($_POST['synopsis']), FILTER_SANITIZE_STRING);
+										$lien_ddl = filter_var(htmlentities($_POST['lien_ddl']), FILTER_SANITIZE_STRING);
 										$date = date("j F Y");
 										$date = str_replace('September', 'Septembre', $date);
 										$date = str_replace('October', 'Octobre', $date);
@@ -742,7 +748,7 @@ if(isset($_POST['button_film'])){
 												$req->closeCursor();
 
 										if($nbre_occurences == 0){	
-										if($i = $bdd->prepare('INSERT INTO film (id, date_add, uploader_id, url_jaquette, titre, titre_release, duree, date_sortie, realisateur, acteurs, genre_1, genre_2, genre_3, qualite, synopsy, hebergeur_video, lien_streaming, exclusivite, video_hs, pending) VALUES (:id, :date_add, :uploader_id, :url_jaquette, :titre, :titre_release, :duree, :date_sortie, :realisateur, :acteurs, :genre_1, :genre_2, :genre_3, :qualite, :synopsy, :hebergeur_video, :lien_streaming, :exclusivite, :video_hs, :pending)')){
+										if($i = $bdd->prepare('INSERT INTO film (id, date_add, uploader_id, url_jaquette, titre, titre_release, duree, date_sortie, realisateur, acteurs, genre_1, genre_2, genre_3, qualite, synopsy, hebergeur_video, lien_streaming, exclusivite, video_hs, pending, lien_ddl) VALUES (:id, :date_add, :uploader_id, :url_jaquette, :titre, :titre_release, :duree, :date_sortie, :realisateur, :acteurs, :genre_1, :genre_2, :genre_3, :qualite, :synopsy, :hebergeur_video, :lien_streaming, :exclusivite, :video_hs, :pending, :lien_ddl)')){
 
 													$i->bindParam(':id', $id);
 													$i->bindParam(':date_add', $date);
@@ -764,6 +770,7 @@ if(isset($_POST['button_film'])){
 													$i->bindParam(':exclusivite', $exclusivite);
 													$i->bindParam(':video_hs', $video_hs);
 													$i->bindParam(':pending', $pending);
+													$i->bindParam(':lien_ddl', $lien_ddl);
 													$i->execute();
 
 											echo '<div id="reptopvalid"><center><i class="fa fa-check"></i> Le film : '.$_POST['titre'].' à bien été ajoutée.</center></div><meta http-equiv="refresh" content="1;ajouter.html?option='.$_GET['option'].'" />';
@@ -850,20 +857,23 @@ echo '<option value="'.$row_4['titre'].'">'.$row_4['titre'].'</option>';
 <option value="VideoMega">VideoMega</option>
 <option value="ViD|AG">ViD|AG</option>
 <option value="AllVid">AllVid</option>
+<option value="YouWatch">YouWatch</option>
+<option value="UptoBox">UptoBox</option>
 </select>
 <input type="text" name="url_video" placeholder="Numero de la vidéo**" class="form-control_profil" required>
 </center>
-<?php if($_SESSION['rank'] > 2){ ?>
 <br>
 <center>
+<input type="text" name="lien_ddl" placeholder="Lien jHeberg*" class="form-control_profil" required>
+<?php if($_SESSION['rank'] > 2){ ?>
 <select class="form-control_profil" name="exclusivite"/>
 <option value="0" selected>Ce n'est pas une exclusivité</option>
 <option value="1">C'est une exclusivité</option>
 </select>
-</center>
 <?php }else {
 	echo '<input type="hidden" name="exclusivite" value="" class="form-control_profil">';
 	} ?>	
+</center>
 <br>
 <center>
 <textarea placeholder="Acteur(s)" name="acteur" required></textarea>
