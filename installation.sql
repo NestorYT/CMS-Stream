@@ -21,15 +21,16 @@ CREATE TABLE `core` (
   `maintenance` int(1) NOT NULL,
   `inscription` int(1) NOT NULL,
   `commentaires` int(1) NOT NULL,
-  `news` int(1) NOT NULL
+  `news` int(1) NOT NULL,
+  `ddl` int(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `core`
 --
 
-INSERT INTO `core` (`id`, `maintenance`, `inscription`, `commentaires`, `news`) VALUES
-(1, 0, 0, 0, 0);
+INSERT INTO `core` (`id`, `maintenance`, `inscription`, `commentaires`, `news`, `ddl`) VALUES
+(1, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
