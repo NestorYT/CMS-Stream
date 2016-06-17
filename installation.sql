@@ -57,7 +57,8 @@ CREATE TABLE `film` (
   `lien_streaming` varchar(255) NOT NULL,
   `exclusivite` int(1) NOT NULL DEFAULT '0',
   `video_hs` int(1) NOT NULL DEFAULT '0',
-  `pending` int(1) NOT NULL DEFAULT '0'
+  `pending` int(1) NOT NULL DEFAULT '0',
+  `lien_ddl` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
