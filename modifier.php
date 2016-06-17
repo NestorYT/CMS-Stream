@@ -468,7 +468,35 @@ if(!isset($_SESSION['pseudo'])){
 								}else{
 								echo '<div id="reptoperror"><center><i class="fa fa-exclamation-triangle"></i> Tu t\'és perdu ?</center></div>';
 							}					
-							}elseif($_GET['option'] != 'news' OR $_GET['option'] != 'commentaires' OR $_GET['option'] != 'maintenance' OR $_GET['option'] != 'news'){
+							}elseif($_GET['option'] == 'ddl'){
+								if($row_core['ddl'] == '0'){
+
+											$news = 1;
+											$id = 1;
+
+											$req = $bdd->prepare("UPDATE core SET ddl = :ddl WHERE id = :id");
+													
+													$req->bindParam(':ddl', $ddl);
+													$req->bindParam(':id', $id);
+         											$req->execute();
+
+													echo '<div id="reptopvalid"><center><i class="fa fa-check"></i> Les téléchargement sont maintenant désactivées.</center></div><meta http-equiv="refresh" content="2;admin.html" />';
+								}elseif($row_core['ddl'] == '1'){
+
+											$ddl = 0;
+											$id = 1;
+
+											$req = $bdd->prepare("UPDATE core SET ddl = :ddl WHERE id = :id");
+													
+													$req->bindParam(':ddl', $ddl);
+													$req->bindParam(':id', $id);
+         											$req->execute();
+
+													echo '<div id="reptopvalid"><center><i class="fa fa-check"></i> Les téléchargement sont maintenant activées.</center></div><meta http-equiv="refresh" content="2;admin.html" />';
+								}else{
+								echo '<div id="reptoperror"><center><i class="fa fa-exclamation-triangle"></i> Tu t\'és perdu ?</center></div>';
+							}					
+							}elseif($_GET['option'] != 'news' OR $_GET['option'] != 'commentaires' OR $_GET['option'] != 'maintenance' OR $_GET['option'] != 'news' OR $_GET['option'] != 'ddl'){
 								echo '<div id="reptoperror"><center><i class="fa fa-exclamation-triangle"></i> Tu t\'és perdu ?</center></div>';
 							}
 
