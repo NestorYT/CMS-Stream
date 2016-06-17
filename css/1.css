@@ -1325,4 +1325,55 @@ input.form-control_profil_auto {
     outline: none;
 
 }
-
+.hoster-thumbnail {
+    display: block;
+    text-align: center;
+    position: relative;
+    float: left;
+    margin: 0 2px;
+    width: 195px;
+    height: 80px;
+    border: 1px solid #d7d7d7;
+    background-color: #f8f8f8;
+}
+.hoster-thumbnail img {
+    margin-top: 13px;
+    margin-bottom: 9px;
+}
+.hoster-thumbnail .status.success-status {
+    background-color: #77aa13;
+}
+.hoster-thumbnail .status.failed-status {
+    background-color: #df2723;
+}
+.hoster-thumbnail .status p {
+    text-transform: uppercase;
+    color: white;
+    line-height: 24px;
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, serif;
+    font-size: 12px;
+}
+.hoster {
+    display: inline-block;
+}
+.filesize {
+    float: right;
+    background: #e67e22;
+    color: white;
+    padding: 5px;
+    border-radius: 2px;
+    margin-bottom: 5px;
+    cursor: default;
+}
+.ddl_film {
+    float: left;
+    background: #1abc9c;
+    color: white;
+    padding: 5px;
+    border-radius: 2px;
+    margin-bottom: 5px;
+}
+a .ddl_film:hover{
+    background: #16A085;
+}
