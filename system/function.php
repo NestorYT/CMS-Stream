@@ -56,4 +56,17 @@ function random($car) {
 	}
 	return $string;
 }
+function format_octets($octets) {
+    if($octets >= 1024 && $octets < pow(1024, 2))
+        $returnstr = number_format($octets/1024, 2, ".", ",") . " Ko";
+    elseif($octets >= pow(1024, 2) && $octets < pow(1024, 3))
+        $returnstr = number_format($octets/pow(1024, 2), 2, ".", ",") . " Mo";
+    elseif($octets >= pow(1024, 3) && $octets < pow(1024, 4))
+        $returnstr = number_format($octets/pow(1024, 3), 2, ".", ",") . " Go";
+    elseif($octets >= pow(1024, 4))
+        $returnstr = number_format($octets/pow(1024, 4), 2, ".", ",") . " To";
+    elseif($octets < 1024)
+        $returnstr = $octets . " o";
+    return $returnstr;
+}
 ?>
