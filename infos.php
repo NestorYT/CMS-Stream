@@ -1,4 +1,5 @@
 <?php require './system/config_inc.php';
+require './system/function.php';
 
 $chaineid = addslashes($_GET['option']);
 $chaineidp = addslashes($_GET['pending']);
