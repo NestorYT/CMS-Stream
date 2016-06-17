@@ -237,7 +237,7 @@ if(($_SESSION['rank'] > 2 && $_GET['option'] == 'qualite') || ($_SESSION['rank']
 	}
 
 	if(isset($_POST['button_film'])){
-		if(preg_match('/jheberg.net/', $_POST['lien_ddl'])){
+		if(preg_match('/jheberg.net/', $_POST['lien_ddl']) || empty($_POST['lien_ddl'])){
 					if($_SERVER['HTTP_REFERER'] == $adresseSite . 'ajouter.html?option=film_auto&code='.$code_film){
 						if(isset($_POST) && isset($_POST['titre']) && isset($_POST['duree']) && isset($_POST['date_sortie']) && isset($_POST['realisateur']) && isset($_POST['genre_1']) && isset($_POST['qualite']) && isset($_POST['url_jaquette']) && isset($_POST['release']) && isset($_POST['hebergeur_video']) && isset($_POST['url_video']) && isset($_POST['acteur']) && isset($_POST['synopsis']) && isset($_POST['token_custom_site'])){
 
@@ -684,7 +684,7 @@ $result_get = 'Ajouter un film';
 $result_icon = '<i class="fa fa-film" aria-hidden="true"></i>';
 }
 if(isset($_POST['button_film'])){
-		if(preg_match('/jheberg.net/', $_POST['lien_ddl'])){
+		if(preg_match('/jheberg.net/', $_POST['lien_ddl']) || empty($_POST['lien_ddl'])){
 					if($_SERVER['HTTP_REFERER'] == $adresseSite . 'ajouter.html?option=film'){
 						if(isset($_POST) && isset($_POST['titre']) && isset($_POST['duree']) && isset($_POST['date_sortie']) && isset($_POST['realisateur']) && isset($_POST['genre_1']) && isset($_POST['qualite']) && isset($_POST['url_jaquette']) && isset($_POST['release']) && isset($_POST['hebergeur_video']) && isset($_POST['url_video']) && isset($_POST['acteur']) && isset($_POST['synopsis']) && isset($_POST['token_custom_site'])){
 
