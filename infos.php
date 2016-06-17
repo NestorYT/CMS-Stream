@@ -163,6 +163,15 @@ if(isset($_POST['button_video_hs'])){
 						}
 						?></center></p>					
 				</div>
+				<?php if($row_core['ddl'] == 0){ ?>
+				<div class="right2"><span class="titre-info"><i class="fa fa-download" aria-hidden="true"></i> Téléchargement</span></div>
+					<div class="right-sub2">
+							
+					<div class="ddl" align="center">
+					Connectez-vous pour télécharger le film.
+					</div>				
+				</div>
+				<?php }else{} ?>
 				<div class="right2"><span class="titre-info"><i class="fa fa-comments" aria-hidden="true"></i> Commentaire(s)</span></div>
 					<div class="right-sub2">
 
@@ -409,7 +418,54 @@ if(isset($_POST['button_video_hs'])){
 							echo '<iframe width="640" height="360" src="https://uptostream.com/iframe/'.$row['lien_streaming'].'" frameborder="0" allowfullscreen></iframe>';
 						}
 						?></center></p>					
+					</div>
+					<?php if($row_core['ddl'] == 0){ ?>
+					<div class="right2"><span class="titre-info"><i class="fa fa-download" aria-hidden="true"></i> Téléchargement</span></div>
+					<div class="right-sub2">
+							
+					<div class="ddl" align="center">
+							<?php
+								if(!empty($row['lien_ddl'])){
+
+									$JhebergIDs = $row['lien_ddl'];
+									$JhebergIDs = preg_replace('#http://www.jheberg.net/mirrors/([a-z0-9\.\_\,\/\-\?\&\=\-\#]+)/#i','$1',$JhebergIDs); 
+									$JhebergIDs = preg_replace('#http://jheberg.net/mirrors/([a-z0-9\.\_\,\/\-\?\&\=\-\#]+)/#i','$1',$JhebergIDs); 
+									 
+							        $ch = curl_init('http://www.jheberg.net/api/verify/file/?id='.$JhebergIDs);
+							                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+							        $json = curl_exec($ch);
+							        $array = json_decode($json, true);
+
+							        if($array['fileName'] ? 1:0){
+							        echo '<a href="'.$row['lien_ddl'].'"><div class="ddl_film">Télécharger le film ('.$array['fileHits'].')</div></a>';
+
+							        echo '<div class="filesize">Taille : '.format_octets($array['fileSize']).'</div><div class="clear"></div><hr><div class="clear"></div>';
+
+									foreach ($array['hosts'] as $verif_jheberg) {
+										
+										$nameheberg = array('Uploaded', 'Uptobox', '1fichier', '2shared', 'Filecloud', 'Filerio', 'Mediafire', 'Mega', 'Rapidgator', 'Turbobit', 'Free', 'Hugefiles', 'Uplea', 'Oboom', 'Nitroflare', 'Jeodrive', 'Rockfile', 'Openload', 'Youwatch', 'Tusfiles', 'Rutube');
+										$corrigeheberg = array('uploaded', 'utb', '1fichier', '2shared', 'filecloud', 'filerio', 'mediafire', 'mega', 'rg', 'turbobit', 'free', 'hugefiles_dl', 'uplea-download', 'oboom-download', 'nitroflare-download', 'jeodrive-download', 'rockfile-download', 'openload-download', 'youwatch-download', 'tusfiles-download', 'rutube-download');
+										$imagename = str_replace($nameheberg, $corrigeheberg, $verif_jheberg['hostName']);
+
+										if($verif_jheberg['hostOnline'] == true){
+											$verif_jheberg_message = '<div class="status success-status"><p>Hébergeur disponible</p></div>';
+										}elseif($verif_jheberg['hostOnline'] == false){
+											$verif_jheberg_message = '<div class="status failed-status"><p>Hébergeur indisponible</p></div>';
+										}
+										echo '<div class="hoster"><div class="hoster-thumbnail"><img src="http://cdn.jheberg.net/images/hosts/download/'.$imagename.'.png">'.$verif_jheberg_message.'</div></div>';
+
+									}
+								}else{
+									echo 'Aucun lien de Téléchargement';
+								}
+								}else{
+									echo 'Aucun lien de Téléchargement';
+								}
+
+							?>	
+					</div>				
 				</div>
+				<?php }else{} ?>
 				
 					<div class="right2"><span class="titre-info"><i class="fa fa-comments" aria-hidden="true"></i> Commentaire(s)</span></div>
 					<div class="right-sub2">
@@ -446,7 +502,7 @@ if(isset($_POST['button_video_hs'])){
 
 					}else{
 
-					if($_SESSION['rank'] == 5){
+					if($_SESSION['rank'] == 0){
 						echo '<center>Impossible - Vous étes BANNI !</center>';
 						}else{ ?>
 					<form action="infos.html?option=<?php echo $chaineid; ?>" autocomplete="off"  method="POST">
@@ -616,6 +672,53 @@ $req = $bdd->prepare("SELECT * FROM film WHERE id = :id");
 						}
 						?></center></p>					
 				</div>
+				<?php if($row_core['ddl'] == 0){ ?>
+				<div class="right2"><span class="titre-info"><i class="fa fa-download" aria-hidden="true"></i> Téléchargement</span></div>
+					<div class="right-sub2">
+							
+					<div class="ddl" align="center">
+							<?php
+								if(!empty($row['lien_ddl'])){
+
+									$JhebergIDs = $row['lien_ddl'];
+									$JhebergIDs = preg_replace('#http://www.jheberg.net/mirrors/([a-z0-9\.\_\,\/\-\?\&\=\-\#]+)/#i','$1',$JhebergIDs); 
+									$JhebergIDs = preg_replace('#http://jheberg.net/mirrors/([a-z0-9\.\_\,\/\-\?\&\=\-\#]+)/#i','$1',$JhebergIDs); 
+									 
+							        $ch = curl_init('http://www.jheberg.net/api/verify/file/?id='.$JhebergIDs);
+							                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+							        $json = curl_exec($ch);
+							        $array = json_decode($json, true);
+
+							        if($array['fileName'] ? 1:0){
+							        echo '<a href="'.$row['lien_ddl'].'"><div class="ddl_film">Télécharger le film ('.$array['fileHits'].')</div></a>';
+
+							        echo '<div class="filesize">Taille : '.format_octets($array['fileSize']).'</div><div class="clear"></div><hr><div class="clear"></div>';
+
+									foreach ($array['hosts'] as $verif_jheberg) {
+										
+										$nameheberg = array('Uploaded', 'Uptobox', '1fichier', '2shared', 'Filecloud', 'Filerio', 'Mediafire', 'Mega', 'Rapidgator', 'Turbobit', 'Free', 'Hugefiles', 'Uplea', 'Oboom', 'Nitroflare', 'Jeodrive', 'Rockfile', 'Openload', 'Youwatch', 'Tusfiles', 'Rutube');
+										$corrigeheberg = array('uploaded', 'utb', '1fichier', '2shared', 'filecloud', 'filerio', 'mediafire', 'mega', 'rg', 'turbobit', 'free', 'hugefiles_dl', 'uplea-download', 'oboom-download', 'nitroflare-download', 'jeodrive-download', 'rockfile-download', 'openload-download', 'youwatch-download', 'tusfiles-download', 'rutube-download');
+										$imagename = str_replace($nameheberg, $corrigeheberg, $verif_jheberg['hostName']);
+
+										if($verif_jheberg['hostOnline'] == true){
+											$verif_jheberg_message = '<div class="status success-status"><p>Hébergeur disponible</p></div>';
+										}elseif($verif_jheberg['hostOnline'] == false){
+											$verif_jheberg_message = '<div class="status failed-status"><p>Hébergeur indisponible</p></div>';
+										}
+										echo '<div class="hoster"><div class="hoster-thumbnail"><img src="http://cdn.jheberg.net/images/hosts/download/'.$imagename.'.png">'.$verif_jheberg_message.'</div></div>';
+
+									}
+								}else{
+									echo 'Aucun lien de Téléchargement';
+								}
+								}else{
+									echo 'Aucun lien de Téléchargement';
+								}
+
+							?>	
+					</div>				
+				</div>
+				<?php }else{} ?>
 				<div class="clear"></div>
 
 			</div>
@@ -707,6 +810,53 @@ if($row['uploader_id'] == $_SESSION['id']){
 						}
 						?></center></p>					
 				</div>
+				<?php if($row_core['ddl'] == 0){ ?>
+				<div class="right2"><span class="titre-info"><i class="fa fa-download" aria-hidden="true"></i> Téléchargement</span></div>
+					<div class="right-sub2">
+							
+					<div class="ddl" align="center">
+							<?php
+								if(!empty($row['lien_ddl'])){
+
+									$JhebergIDs = $row['lien_ddl'];
+									$JhebergIDs = preg_replace('#http://www.jheberg.net/mirrors/([a-z0-9\.\_\,\/\-\?\&\=\-\#]+)/#i','$1',$JhebergIDs); 
+									$JhebergIDs = preg_replace('#http://jheberg.net/mirrors/([a-z0-9\.\_\,\/\-\?\&\=\-\#]+)/#i','$1',$JhebergIDs); 
+									 
+							        $ch = curl_init('http://www.jheberg.net/api/verify/file/?id='.$JhebergIDs);
+							                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+							        $json = curl_exec($ch);
+							        $array = json_decode($json, true);
+
+							        if($array['fileName'] ? 1:0){
+							        echo '<a href="'.$row['lien_ddl'].'"><div class="ddl_film">Télécharger le film ('.$array['fileHits'].')</div></a>';
+
+							        echo '<div class="filesize">Taille : '.format_octets($array['fileSize']).'</div><div class="clear"></div><hr><div class="clear"></div>';
+
+									foreach ($array['hosts'] as $verif_jheberg) {
+										
+										$nameheberg = array('Uploaded', 'Uptobox', '1fichier', '2shared', 'Filecloud', 'Filerio', 'Mediafire', 'Mega', 'Rapidgator', 'Turbobit', 'Free', 'Hugefiles', 'Uplea', 'Oboom', 'Nitroflare', 'Jeodrive', 'Rockfile', 'Openload', 'Youwatch', 'Tusfiles', 'Rutube');
+										$corrigeheberg = array('uploaded', 'utb', '1fichier', '2shared', 'filecloud', 'filerio', 'mediafire', 'mega', 'rg', 'turbobit', 'free', 'hugefiles_dl', 'uplea-download', 'oboom-download', 'nitroflare-download', 'jeodrive-download', 'rockfile-download', 'openload-download', 'youwatch-download', 'tusfiles-download', 'rutube-download');
+										$imagename = str_replace($nameheberg, $corrigeheberg, $verif_jheberg['hostName']);
+
+										if($verif_jheberg['hostOnline'] == true){
+											$verif_jheberg_message = '<div class="status success-status"><p>Hébergeur disponible</p></div>';
+										}elseif($verif_jheberg['hostOnline'] == false){
+											$verif_jheberg_message = '<div class="status failed-status"><p>Hébergeur indisponible</p></div>';
+										}
+										echo '<div class="hoster"><div class="hoster-thumbnail"><img src="http://cdn.jheberg.net/images/hosts/download/'.$imagename.'.png">'.$verif_jheberg_message.'</div></div>';
+
+									}
+								}else{
+									echo 'Aucun lien de Téléchargement';
+								}
+								}else{
+									echo 'Aucun lien de Téléchargement';
+								}
+
+							?>	
+					</div>				
+				</div>
+				<?php }else{} ?>
 				<div class="clear"></div>
 
 			</div>
