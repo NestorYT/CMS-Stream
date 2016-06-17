@@ -237,7 +237,7 @@ if(($_SESSION['rank'] > 2 && $_GET['option'] == 'qualite') || ($_SESSION['rank']
 	}
 
 	if(isset($_POST['button_film'])){
-
+		if(preg_match('/jheberg.net/', $_POST['lien_ddl'])){
 					if($_SERVER['HTTP_REFERER'] == $adresseSite . 'ajouter.html?option=film_auto&code='.$code_film){
 						if(isset($_POST) && isset($_POST['titre']) && isset($_POST['duree']) && isset($_POST['date_sortie']) && isset($_POST['realisateur']) && isset($_POST['genre_1']) && isset($_POST['qualite']) && isset($_POST['url_jaquette']) && isset($_POST['release']) && isset($_POST['hebergeur_video']) && isset($_POST['url_video']) && isset($_POST['acteur']) && isset($_POST['synopsis']) && isset($_POST['token_custom_site'])){
 
@@ -351,6 +351,9 @@ if(($_SESSION['rank'] > 2 && $_GET['option'] == 'qualite') || ($_SESSION['rank']
 				}}else{
 					echo '';
 					}
+				}else{
+					echo '<div id="reptoperror"><center><i class="fa fa-exclamation-triangle"></i> Lien du téléchargement interdit. <br>Uniquement l\'hebergeur jHeberg.</center></div><meta http-equiv="refresh" content="1;ajouter.html?option='.$_GET['option'].'&code='.$code_film.'" />';
+				}
 			}else{
 			}
 
@@ -681,7 +684,7 @@ $result_get = 'Ajouter un film';
 $result_icon = '<i class="fa fa-film" aria-hidden="true"></i>';
 }
 if(isset($_POST['button_film'])){
-
+		if(preg_match('/jheberg.net/', $_POST['lien_ddl'])){
 					if($_SERVER['HTTP_REFERER'] == $adresseSite . 'ajouter.html?option=film'){
 						if(isset($_POST) && isset($_POST['titre']) && isset($_POST['duree']) && isset($_POST['date_sortie']) && isset($_POST['realisateur']) && isset($_POST['genre_1']) && isset($_POST['qualite']) && isset($_POST['url_jaquette']) && isset($_POST['release']) && isset($_POST['hebergeur_video']) && isset($_POST['url_video']) && isset($_POST['acteur']) && isset($_POST['synopsis']) && isset($_POST['token_custom_site'])){
 
@@ -795,6 +798,9 @@ if(isset($_POST['button_film'])){
 				}}else{
 					echo '';
 					}
+				}else{
+					echo '<div id="reptoperror"><center><i class="fa fa-exclamation-triangle"></i> Lien du téléchargement interdit. <br>Uniquement l\'hebergeur jHeberg.</center></div><meta http-equiv="refresh" content="1;ajouter.html?option='.$_GET['option'].'&code='.$code_film.'" />';
+				}
 			}else{
 			}	
 
