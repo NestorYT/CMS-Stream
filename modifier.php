@@ -19,6 +19,11 @@ $namePage = 'Modification d\'une news';
 include './system/header.php'; 
 require './system/config_inc.php';
 require './system/function.php';
+
+$req = $bdd->prepare("SELECT * FROM core WHERE id = :id");
+					$req->execute(array(
+						'id' => 1));
+					$row_core = $req->fetch();
 ?>
 
 <div class="wrap">
@@ -710,11 +715,15 @@ if(empty($result_modifadmin)){
 	<option value="UptoBox">UptoBox</option>
 	</select>
 	<input type="text" name="url_video" value="<?php echo $row['lien_streaming']; ?>" class="form-control_profil" required>
-	<?php if(empty($row['lien_ddl'])){
+	<?php 
+	if($row_core['ddl'] == 0){
+	if(empty($row['lien_ddl'])){
 			echo '<input type="text" name="lien_ddl" placeholder="Lien jHeberg*" class="form-control_profil" required>';
 		}else{
 			echo '<input type="text" name="lien_ddl" value="'.$row['lien_ddl'].'" class="form-control_profil" required>';
-	} ?>
+	}
+	}else{} 
+	?>
 	</center>
 	<br>
 	<center>
@@ -916,11 +925,15 @@ if(empty($result_modifadmin)){
 	<option value="UptoBox">UptoBox</option>
 	</select>
 	<input type="text" name="url_video" value="<?php echo $row['lien_streaming']; ?>" class="form-control_profil" required>
-	<?php if(empty($row['lien_ddl'])){
-			echo '<input type="text" name="lien_ddl" placeholder="Lien jHeberg*" class="form-control_profil" style="margin-top:10px;" required></center>';
+	<?php 
+	if($row_core['ddl'] == 0){
+	if(empty($row['lien_ddl'])){
+			echo '<input type="text" name="lien_ddl" placeholder="Lien jHeberg*" class="form-control_profil" required>';
 		}else{
-			echo '<input type="text" name="lien_ddl" value="'.$row['lien_ddl'].'" class="form-control_profil" style="margin-top:10px;" required></center>';
-	} ?>
+			echo '<input type="text" name="lien_ddl" value="'.$row['lien_ddl'].'" class="form-control_profil" required>';
+	}
+	}else{} 
+	?>
 	</center>
 	<br>
 	<center>
