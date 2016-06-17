@@ -553,8 +553,12 @@ echo '<option value="'.$row_4['titre'].'">'.$row_4['titre'].'</option>';
 </center>
 <br>
 <center>
+<?php if($row_core['ddl'] == 0){ ?>
 <input type="text" name="lien_ddl" placeholder="Lien jHeberg*" class="form-control_profil" required>
-<?php if($_SESSION['rank'] > 2){ ?>
+<?php
+}else{}
+
+if($_SESSION['rank'] > 2){ ?>
 <select class="form-control_profil" name="exclusivite"/>
 <option value="0" selected>Ce n'est pas une exclusivité</option>
 <option value="1">C'est une exclusivité</option>
@@ -864,8 +868,12 @@ echo '<option value="'.$row_4['titre'].'">'.$row_4['titre'].'</option>';
 </center>
 <br>
 <center>
+<?php if($row_core['ddl'] == 0){ ?>
 <input type="text" name="lien_ddl" placeholder="Lien jHeberg*" class="form-control_profil" required>
-<?php if($_SESSION['rank'] > 2){ ?>
+<?php
+}else{}
+
+if($_SESSION['rank'] > 2){ ?>
 <select class="form-control_profil" name="exclusivite"/>
 <option value="0" selected>Ce n'est pas une exclusivité</option>
 <option value="1">C'est une exclusivité</option>
