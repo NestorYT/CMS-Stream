@@ -47,9 +47,9 @@ if($_SESSION['rank'] > 2){
 						$result_news = 'Activer les news';
 						}
 						if($row_core['ddl'] == 0){
-						$result_news = 'Désactiver les téléchargements';
+						$result_ddl = 'Désactiver les téléchargements';
 						}elseif($row_core['ddl'] == 1){
-						$result_news = 'Activer les téléchargements';
+						$result_ddl = 'Activer les téléchargements';
 						}
 						
 						$retour = $bdd->query('SELECT COUNT(*) AS nbre_entrees FROM membres WHERE actif = 0');
