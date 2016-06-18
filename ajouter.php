@@ -58,7 +58,7 @@ if(($_SESSION['rank'] > 2 && $_GET['option'] == 'qualite') || ($_SESSION['rank']
 	
 				if(isset($_POST['button'])){
 					if($_SERVER['HTTP_REFERER'] == $adresseSite . 'ajouter.html?option=qualite'){
-						if(isset($_POST) && isset($_POST['qualite']) && isset($_POST['token_custom_site'])){
+						if(isset($_POST) && !empty($_POST['qualite']) && !empty($_POST['token_custom_site'])){
 								if($_POST['token_custom_site'] == $_SESSION['token']){
 									if($_POST['f1_img'] == $_SESSION['jeton_f1']){
 										unset($_SESSION['jeton_f1']);
@@ -90,10 +90,10 @@ if(($_SESSION['rank'] > 2 && $_GET['option'] == 'qualite') || ($_SESSION['rank']
 											echo '';
 										}
 				}else{
-					echo '';
+					echo '<div id="reptoperror"><center><i class="fa fa-exclamation-triangle"></i> Merci de remplir les champs.</center></div><meta http-equiv="refresh" content="1;ajouter.html?option='.$_GET['option'].'" />';
 				}
 			}elseif($_SERVER['HTTP_REFERER'] == $adresseSite . 'ajouter.html?option=genre'){
-						if(isset($_POST) && isset($_POST['genre']) && isset($_POST['token_custom_site'])){
+						if(isset($_POST) && !empty($_POST['genre']) && !empty($_POST['token_custom_site'])){
 								if($_POST['token_custom_site'] == $_SESSION['token']){
 									if($_POST['f1_img'] == $_SESSION['jeton_f1']){
 										unset($_SESSION['jeton_f1']);
@@ -125,10 +125,10 @@ if(($_SESSION['rank'] > 2 && $_GET['option'] == 'qualite') || ($_SESSION['rank']
 											echo '';
 										}
 				}else{
-					echo '';
+					echo '<div id="reptoperror"><center><i class="fa fa-exclamation-triangle"></i> Merci de remplir les champs.</center></div><meta http-equiv="refresh" content="1;ajouter.html?option='.$_GET['option'].'" />';
 				}
 			}elseif($_SERVER['HTTP_REFERER'] == $adresseSite . 'ajouter.html?option=news'){
-						if(isset($_POST) && isset($_POST['news']) && isset($_POST['token_custom_site'])){
+						if(isset($_POST) && !empty($_POST['news']) && !empty($_POST['token_custom_site'])){
 								if($_POST['token_custom_site'] == $_SESSION['token']){
 									if($_POST['f1_img'] == $_SESSION['jeton_f1']){
 										unset($_SESSION['jeton_f1']);
@@ -170,7 +170,7 @@ if(($_SESSION['rank'] > 2 && $_GET['option'] == 'qualite') || ($_SESSION['rank']
 											echo '';
 										}
 				}else{
-					echo '';
+					echo '<div id="reptoperror"><center><i class="fa fa-exclamation-triangle"></i> Merci de remplir les champs.</center></div><meta http-equiv="refresh" content="1;ajouter.html?option='.$_GET['option'].'" />';
 				}
 			}else{
 				echo '';
@@ -239,7 +239,7 @@ if(($_SESSION['rank'] > 2 && $_GET['option'] == 'qualite') || ($_SESSION['rank']
 	if(isset($_POST['button_film'])){
 		if(preg_match('/jheberg.net/', $_POST['lien_ddl']) || empty($_POST['lien_ddl'])){
 					if($_SERVER['HTTP_REFERER'] == $adresseSite . 'ajouter.html?option=film_auto&code='.$code_film){
-						if(isset($_POST) && isset($_POST['titre']) && isset($_POST['duree']) && isset($_POST['date_sortie']) && isset($_POST['realisateur']) && isset($_POST['genre_1']) && isset($_POST['qualite']) && isset($_POST['url_jaquette']) && isset($_POST['release']) && isset($_POST['hebergeur_video']) && isset($_POST['url_video']) && isset($_POST['acteur']) && isset($_POST['synopsis']) && isset($_POST['token_custom_site'])){
+						if(isset($_POST) && !empty($_POST['titre']) && !empty($_POST['duree']) && !empty($_POST['date_sortie']) && !empty($_POST['realisateur']) && !empty($_POST['genre_1']) && !empty($_POST['qualite']) && !empty($_POST['url_jaquette']) && !empty($_POST['release']) && !empty($_POST['hebergeur_video']) && !empty($_POST['url_video']) && !empty($_POST['acteur']) && !empty($_POST['synopsis']) && !empty($_POST['token_custom_site'])){
 
 								if($_POST['token_custom_site'] == $_SESSION['token']){
 									if($_POST['f1_img'] == $_SESSION['jeton_f1']){
@@ -347,7 +347,7 @@ if(($_SESSION['rank'] > 2 && $_GET['option'] == 'qualite') || ($_SESSION['rank']
 											echo '';
 										}
 				}else{
-					echo '';
+					echo '<div id="reptoperror"><center><i class="fa fa-exclamation-triangle"></i> Merci de remplir tout les champs.</center></div><meta http-equiv="refresh" content="1;ajouter.html?option='.$_GET['option'].'&code='.$code_film.'" />';
 				}}else{
 					echo '';
 					}
@@ -550,6 +550,7 @@ echo '<option value="'.$row_4['titre'].'">'.$row_4['titre'].'</option>';
 <option value="AllVid">AllVid</option>
 <option value="UpToStream">UpToStream</option>
 <option value="YouWatch">YouWatch</option>
+<option value="UptoBox">UptoBox</option>
 </select>
 <input type="text" name="url_video" placeholder="Numero de la vidéo**" class="form-control_profil" required>
 </center>
@@ -685,7 +686,7 @@ $result_icon = '<i class="fa fa-film" aria-hidden="true"></i>';
 if(isset($_POST['button_film'])){
 		if(preg_match('/jheberg.net/', $_POST['lien_ddl']) || empty($_POST['lien_ddl'])){
 					if($_SERVER['HTTP_REFERER'] == $adresseSite . 'ajouter.html?option=film'){
-						if(isset($_POST) && isset($_POST['titre']) && isset($_POST['duree']) && isset($_POST['date_sortie']) && isset($_POST['realisateur']) && isset($_POST['genre_1']) && isset($_POST['qualite']) && isset($_POST['url_jaquette']) && isset($_POST['release']) && isset($_POST['hebergeur_video']) && isset($_POST['url_video']) && isset($_POST['acteur']) && isset($_POST['synopsis']) && isset($_POST['token_custom_site'])){
+						if(isset($_POST) && !empty($_POST['titre']) && !empty($_POST['duree']) && !empty($_POST['date_sortie']) && !empty($_POST['realisateur']) && !empty($_POST['genre_1']) && !empty($_POST['qualite']) && !empty($_POST['url_jaquette']) && !empty($_POST['release']) && !empty($_POST['hebergeur_video']) && !empty($_POST['url_video']) && !empty($_POST['acteur']) && !empty($_POST['synopsis']) && !empty($_POST['token_custom_site'])){
 
 								if($_POST['token_custom_site'] == $_SESSION['token']){
 									if($_POST['f1_img'] == $_SESSION['jeton_f1']){
@@ -793,12 +794,12 @@ if(isset($_POST['button_film'])){
 											echo '';
 										}
 				}else{
-					echo '';
+					echo '<div id="reptoperror"><center><i class="fa fa-exclamation-triangle"></i> Merci de remplir tout les champs.</center></div><meta http-equiv="refresh" content="1;ajouter.html?option='.$_GET['option'].'" />';
 				}}else{
 					echo '';
 					}
 				}else{
-					echo '<div id="reptoperror"><center><i class="fa fa-exclamation-triangle"></i> Lien du téléchargement interdit. <br>Uniquement l\'hebergeur jHeberg.</center></div><meta http-equiv="refresh" content="1;ajouter.html?option='.$_GET['option'].'&code='.$code_film.'" />';
+					echo '<div id="reptoperror"><center><i class="fa fa-exclamation-triangle"></i> Lien du téléchargement interdit. <br>Uniquement l\'hebergeur jHeberg.</center></div><meta http-equiv="refresh" content="1;ajouter.html?option='.$_GET['option'].'" />';
 				}
 			}else{
 			}	
@@ -866,8 +867,8 @@ echo '<option value="'.$row_4['titre'].'">'.$row_4['titre'].'</option>';
 <option value="VideoMega">VideoMega</option>
 <option value="ViD|AG">ViD|AG</option>
 <option value="AllVid">AllVid</option>
-<option value="UptoStream">UptoStream</option>
 <option value="YouWatch">YouWatch</option>
+<option value="UptoBox">UptoBox</option>
 </select>
 <input type="text" name="url_video" placeholder="Numero de la vidéo**" class="form-control_profil" required>
 </center>
