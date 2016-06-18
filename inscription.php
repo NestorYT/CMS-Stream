@@ -55,7 +55,7 @@ $secret = ''; // votre clé privée
 						if($_SERVER['HTTP_REFERER'] == $adresseSite . 'inscription.html'){
 
 							
-							if(isset($_POST) && isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['password_verif']) && isset($_POST['email']) && isset($_POST['token_login']) && isset($_POST["g-recaptcha-response"])){
+							if(isset($_POST) && !empty($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['password_verif']) && isset($_POST['email']) && isset($_POST['token_login']) && isset($_POST["g-recaptcha-response"])){
 
 								$domainList = array('yopmail', 'mailcatch', 'zoemail', 'zippymail', 'yuurok', 'yogamaven', 'xoxy', 'wuzupmail', 'wronghead', 'winemaven', 'willselfdestruct', 'whyspam', 'trashymail', 'trashmailer', 'trashmail', 'jetable', 'gustr', 'armyspy', 'cuvox', 'dayrep', 'einrot', 'fleckens', 'jourrapide', 'rhyta', 'superrito', 'teleworm', 'gmx');
 
