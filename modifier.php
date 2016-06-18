@@ -53,7 +53,7 @@ if(!isset($_SESSION['pseudo'])){
 
 	if(isset($_POST['button'])){
 					if($_SERVER['HTTP_REFERER'] == $adresseSite . 'modifier.html?id='.$_GET['id'].'&option='.$_GET['option']){
-						if(isset($_POST) && isset($_POST['rang']) && isset($_POST['token_custom_site'])){
+						if(isset($_POST) && !empty($_POST['rang']) && !empty($_POST['token_custom_site'])){
 								if($_POST['token_custom_site'] == $_SESSION['token']){
 									if($_POST['f9_img'] == $_SESSION['jeton_f9']){
 										unset($_SESSION['jeton_f9']);
@@ -85,7 +85,7 @@ if(!isset($_SESSION['pseudo'])){
 			}
 	if(isset($_POST['button_qualite'])){
 					if($_SERVER['HTTP_REFERER'] == $adresseSite . 'modifier.html?id='.$_GET['id'].'&option='.$_GET['option']){
-						if(isset($_POST) && isset($_POST['qualite']) && isset($_POST['token_custom_site'])){
+						if(isset($_POST) && !empty($_POST['qualite']) && !empty($_POST['token_custom_site'])){
 								if($_POST['token_custom_site'] == $_SESSION['token']){
 									if($_POST['f9_img'] == $_SESSION['jeton_f9']){
 										unset($_SESSION['jeton_f9']);
@@ -127,7 +127,7 @@ if(!isset($_SESSION['pseudo'])){
 
 	if(isset($_POST['button_news'])){
 					if($_SERVER['HTTP_REFERER'] == $adresseSite . 'modifier.html?id='.$_GET['id'].'&option='.$_GET['option']){
-						if(isset($_POST) && isset($_POST['news']) && isset($_POST['token_custom_site'])){
+						if(isset($_POST) && !empty($_POST['news']) && !empty($_POST['token_custom_site'])){
 								if($_POST['token_custom_site'] == $_SESSION['token']){
 									if($_POST['f9_img'] == $_SESSION['jeton_f9']){
 										unset($_SESSION['jeton_f9']);
@@ -161,7 +161,7 @@ if(!isset($_SESSION['pseudo'])){
 
 	if(isset($_POST['button_genre'])){
 					if($_SERVER['HTTP_REFERER'] == $adresseSite . 'modifier.html?id='.$_GET['id'].'&option='.$_GET['option']){
-						if(isset($_POST) && isset($_POST['genre']) && isset($_POST['token_custom_site'])){
+						if(isset($_POST) && !empty($_POST['genre']) && !empty($_POST['token_custom_site'])){
 								if($_POST['token_custom_site'] == $_SESSION['token']){
 									if($_POST['f9_img'] == $_SESSION['jeton_f9']){
 										unset($_SESSION['jeton_f9']);
@@ -514,7 +514,7 @@ if(!isset($_SESSION['pseudo'])){
 
 		if(isset($_POST['button_film_modifier'])){
 			if(preg_match('/jheberg.net/', $_POST['lien_ddl']) || empty($_POST['lien_ddl'])){
-						if(isset($_POST) && isset($_POST['titre']) && isset($_POST['duree']) && isset($_POST['date_sortie']) && isset($_POST['realisateur']) && isset($_POST['genre_1']) && isset($_POST['qualite']) && isset($_POST['url_jaquette']) && isset($_POST['release']) && isset($_POST['hebergeur_video']) && isset($_POST['url_video']) && isset($_POST['acteur']) && isset($_POST['synopsis']) && isset($_POST['token_custom_site'])){
+						if(isset($_POST) && !empty($_POST['titre']) && !empty($_POST['duree']) && !empty($_POST['date_sortie']) && !empty($_POST['realisateur']) && !empty($_POST['genre_1']) && !empty($_POST['qualite']) && !empty($_POST['url_jaquette']) && !empty($_POST['release']) && !empty($_POST['hebergeur_video']) && !empty($_POST['url_video']) && !empty($_POST['acteur']) && !empty($_POST['synopsis']) && !empty($_POST['token_custom_site'])){
 
 								if($_POST['token_custom_site'] == $_SESSION['token']){
 									if($_POST['f1_img'] == $_SESSION['jeton_f1']){
@@ -715,6 +715,7 @@ if(empty($result_modifadmin)){
 	<option value="AllVid">AllVid</option>
 	<option value="UpToStream">UpToStream</option>
 	<option value="YouWatch">YouWatch</option>
+	<option value="UptoBox">UptoBox</option>
 	</select>
 	<input type="text" name="url_video" value="<?php echo $row['lien_streaming']; ?>" class="form-control_profil" required>
 	<?php 
@@ -762,7 +763,7 @@ if(empty($result_modifadmin)){
 
 		if(isset($_POST['button_monfilm_modifier'])){
 				if(preg_match('/jheberg.net/', $_POST['lien_ddl']) || empty($_POST['lien_ddl'])){
-						if(isset($_POST) && isset($_POST['titre']) && isset($_POST['duree']) && isset($_POST['date_sortie']) && isset($_POST['realisateur']) && isset($_POST['genre_1']) && isset($_POST['qualite']) && isset($_POST['url_jaquette']) && isset($_POST['release']) && isset($_POST['hebergeur_video']) && isset($_POST['url_video']) && isset($_POST['acteur']) && isset($_POST['synopsis']) && isset($_POST['token_custom_site'])){
+						if(isset($_POST) && !empty($_POST['titre']) && !empty($_POST['duree']) && !empty($_POST['date_sortie']) && !empty($_POST['realisateur']) && !empty($_POST['genre_1']) && !empty($_POST['qualite']) && !empty($_POST['url_jaquette']) && !empty($_POST['release']) && !empty($_POST['hebergeur_video']) && !empty($_POST['url_video']) && !empty($_POST['acteur']) && !empty($_POST['synopsis']) && !empty($_POST['token_custom_site'])){
 
 								if($_POST['token_custom_site'] == $_SESSION['token']){
 									if($_POST['f1_img'] == $_SESSION['jeton_f1']){
@@ -927,6 +928,7 @@ if(empty($result_modifadmin)){
 	<option value="AllVid">AllVid</option>
 	<option value="UpToStream">UpToStream</option>
 	<option value="YouWatch">YouWatch</option>
+	<option value="UptoBox">UptoBox</option>
 	</select>
 	<input type="text" name="url_video" value="<?php echo $row['lien_streaming']; ?>" class="form-control_profil" required>
 	<?php 
