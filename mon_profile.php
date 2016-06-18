@@ -34,7 +34,7 @@ if($_SESSION['rank'] > 0){
 
 					if(isset($_POST['button_mdp'])){
 					if($_SERVER['HTTP_REFERER'] == $adresseSite . 'mon_profile.html'){
-						if(isset($_POST) && isset($_POST['mdp']) && isset($_POST['new_mdp']) && isset($_POST['token_custom_site'])){
+						if(isset($_POST) && !empty($_POST['mdp']) && !empty($_POST['new_mdp']) && !empty($_POST['token_custom_site'])){
 						$mdp = filter_var(htmlentities(sha1($_POST['mdp']), FILTER_SANITIZE_STRING));
 						if($mdp == $row['password']){ // Ancien mdp = mdp bdd
 								if($_POST['token_custom_site'] == $_SESSION['token']){
@@ -77,7 +77,7 @@ if($_SESSION['rank'] > 0){
 			}
 			if(isset($_POST['button_mail'])){
 					if($_SERVER['HTTP_REFERER'] == $adresseSite . 'mon_profile.html'){
-						if(isset($_POST) && isset($_POST['mail']) && isset($_POST['token_custom_site'])){
+						if(isset($_POST) && !empty($_POST['mail']) && !empty($_POST['token_custom_site'])){
 								if($_POST['token_custom_site'] == $_SESSION['token']){
 									if($_POST['f7_img'] == $_SESSION['jeton_f7']){
 										unset($_SESSION['jeton_f7']);
@@ -123,7 +123,8 @@ if($_SESSION['rank'] > 0){
 			}
 			if(isset($_POST['button_url_avatar'])){
 					if($_SERVER['HTTP_REFERER'] == $adresseSite . 'mon_profile.html'){
-						if(isset($_POST) && isset($_POST['url_avatar']) && isset($_POST['token_custom_site'])){
+						if(preg_match('/.jpg/', $_POST['url_avatar']) || preg_match('/.png/', $_POST['url_avatar']) || preg_match('/.jpeg/', $_POST['url_avatar']) || preg_match('/.gif/', $_POST['url_avatar'])){
+						if(isset($_POST) && !empty($_POST['url_avatar']) && !empty($_POST['token_custom_site'])){
 								if($_POST['token_custom_site'] == $_SESSION['token']){
 									if($_POST['f8_img'] == $_SESSION['jeton_f8']){
 										unset($_SESSION['jeton_f8']);
@@ -150,6 +151,9 @@ if($_SESSION['rank'] > 0){
 				}else{
 					echo '';
 				}
+				}else{
+					echo '<div id="reptoperror"><center><i class="fa fa-exclamation-triangle"></i> Merci de rentrer une URL d\'image valide.</center></div>';
+				}
 			}else{
 				echo '';
 			}}else{
@@ -157,7 +161,7 @@ if($_SESSION['rank'] > 0){
 			}
 			if(isset($_POST['button_theme'])){
 					if($_SERVER['HTTP_REFERER'] == $adresseSite . 'mon_profile.html'){
-						if(isset($_POST) && isset($_POST['theme']) && isset($_POST['token_custom_site'])){
+						if(isset($_POST) && !empty($_POST['theme']) && !empty($_POST['token_custom_site'])){
 							if(!empty($_POST['theme'])){
 								if($_POST['token_custom_site'] == $_SESSION['token']){
 									if($_POST['f9_img'] == $_SESSION['jeton_f9']){
