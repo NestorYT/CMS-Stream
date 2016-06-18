@@ -259,7 +259,7 @@ if(isset($_POST['button_video_hs'])){
 if(!empty($_GET['option'])){
 
 			if(isset($_POST['button_commentaire'])){
-						if(isset($_POST) && isset($_POST['commentaire']) && isset($_POST['token_custom_site'])){
+						if(isset($_POST) && !empty($_POST['commentaire']) && !empty($_POST['token_custom_site'])){
 								if($_POST['token_custom_site'] == $_SESSION['token']){
 									if($_POST['f8_img'] == $_SESSION['jeton_f8']){
 										unset($_SESSION['jeton_f8']);
