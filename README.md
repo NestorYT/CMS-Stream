@@ -39,3 +39,5 @@ NOTE : PHP7 n'est pour le moment non-compatible avec la version actuel du CMS.
 M.A.J : Mettre à jour votre base SQL (rajout d'un champ lien_ddl dans film & d'un champ ddl dans core)
 
 <img src="http://image.prntscr.com/image/ae9aaf773b1f4fb88d04983b2b7e1ccb.png">
+
+By KiwiDeaD
